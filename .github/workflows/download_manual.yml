@@ -1,0 +1,29 @@
+# This is a basic workflow that is manually triggered
+
+name: Download Manual workflow
+
+on:
+  # release:
+  #   types: published
+  workflow_dispatch:
+  
+jobs:
+  build:
+    name: Publish Release
+    # runs-on: ubuntu-latest
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.x'
+    - run: pip install packaging
+    # - run: pip install pyserial
+    - run: pip install requests
+    - name: Build Release
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: python main.py
