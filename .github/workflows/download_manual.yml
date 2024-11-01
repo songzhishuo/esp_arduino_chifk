@@ -28,16 +28,16 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: python main.py
 
-    - name: Create ZIP file
-      run: |
-        mkdir release
-        cp -r .downloads/* release/
-        zip -r release.zip release
+    # - name: Create ZIP file
+    #   run: |
+    #     mkdir release
+    #     cp -r .downloads/* release/
+    #     zip -r release.zip release
 
     - name: Upload Release
       uses: softprops/action-gh-release@v1
       with:
           upload_url: ${{ github.event.release.upload_url }}
-          assets: result.zip
+          assets: .downloads/package_esp32_index.json
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
