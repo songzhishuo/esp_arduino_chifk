@@ -10,8 +10,8 @@ on:
 jobs:
   build:
     name: Publish Release
-    # runs-on: ubuntu-latest
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
+    # runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v4
