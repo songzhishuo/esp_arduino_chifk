@@ -21,7 +21,8 @@ jobs:
       with:
         python-version: '3.x'
     - run: pip install packaging
-    - run: pip install pyserial
+    # - run: pip install pyserial
+    - run: pip install requests
     - name: Build Release
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
