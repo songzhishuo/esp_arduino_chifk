@@ -34,7 +34,7 @@ jobs:
     #     cp -r .downloads/* release/
     #     zip -r release.zip release
     - name: Zip the Build
-      run: zip -r ${{ secrets.ReleaseZipName }} .downloads/ 
+      run: zip -r ${{ secrets.ReleaseZipName }} .downloads/*
 
 
     # - name: Upload Release
