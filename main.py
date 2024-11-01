@@ -56,7 +56,7 @@ def find_json_handle(obj, handle):
 
 def download_file(url, pack_size, dest_folder):
     # 下载文件
-    
+
     try:
         if not os.path.isdir(dest_folder):
             os.makedirs(dest_folder)  # 创建目标文件夹
@@ -70,6 +70,8 @@ def download_file(url, pack_size, dest_folder):
         actual_size = os.path.getsize(file_name)  # 获取文件大小
         if actual_size != pack_size:
             print(f"Warning: {file_name} size is {actual_size} bytes, expected {pack_size} bytes.")
+            print(f"Actual size: {actual_size} ({type(actual_size)})")
+            print(f"Pack size: {pack_size} ({type(pack_size)})")
             return None  # 返回 None 表示下载失败
         else:
             print(f"Downloaded {file_name} successfully!")
@@ -145,7 +147,7 @@ def parse_pack_index_file(file_name, find_version, pc_arch):
                                             if system['host'] == pc_arch:
                                                 # print(f"Host: {system['host']}")
                                                 pack_url = system['url']
-                                                pack_size = system['size']
+                                                pack_size = int(system['size'])
                                                 print(f"[{tool_index}]Download URL: {system['url']}")
 
                                                 # tools_download_url_list.append((tool_name, pack_url, pack_size))
