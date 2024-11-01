@@ -33,11 +33,25 @@ jobs:
     #     mkdir release
     #     cp -r .downloads/* release/
     #     zip -r release.zip release
+    - name: Zip the Build
+      run: zip -r ${{ secrets.ReleaseZipName }} .downloads/ 
 
-    - name: Upload Release
-      uses: softprops/action-gh-release@v1
-      with:
-          upload_url: ${{ github.event.release.upload_url }}
-          assets: .downloads/package_esp32_index.json
+
+    # - name: Upload Release
+    #   uses: softprops/action-gh-release@v1
+    #   with:
+    #       upload_url: ${{ github.event.release.upload_url }}
+    #       assets: .downloads/package_esp32_index.json
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
+    - name: Upload Release Asset
+      uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./${{ secrets.ReleaseZipName }}.zip
+        asset_name: ${{ secrets.ReleaseZipName }}.zip
+        asset_content_type: application/zip    
