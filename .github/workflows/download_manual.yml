@@ -42,7 +42,7 @@ jobs:
     
     - name: pacakge tar
       run: |
-        tar -czvf dist.tar.gz -C .downloads
+        tar -cvf dist.tar.gz .downloads
 
     # - name: Upload Release
     #   uses: softprops/action-gh-release@v1
