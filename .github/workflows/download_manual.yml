@@ -42,7 +42,7 @@ jobs:
     
     - name: pacakge tar
       run: |
-        tar -czvf ${{ secrets.ReleaseZipName }} -C .downloads/*
+        tar -czvf dist.tar.gz -C .downloads/*
 
     # - name: Upload Release
     #   uses: softprops/action-gh-release@v1
@@ -70,5 +70,5 @@ jobs:
       with:
         name: latest
         make_latest: true
-        files: ${{ secrets.ReleaseZipName }}.zip
+        files: dist.tar.gz
       
