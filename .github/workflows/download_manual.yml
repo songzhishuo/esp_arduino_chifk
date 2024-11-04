@@ -36,9 +36,13 @@ jobs:
     #     mkdir release
     #     cp -r .downloads/* release/
     #     zip -r release.zip release
-    - name: Zip the Build
-      run: zip -r ${{ secrets.ReleaseZipName }} .downloads/*
-
+    
+    # - name: Zip the Build
+    #   run: zip -r ${{ secrets.ReleaseZipName }} .downloads/*
+    
+    - name: pacakge tar
+      run: |
+        tar -czvf ${{ secrets.ReleaseZipName }} -C .downloads/*
 
     # - name: Upload Release
     #   uses: softprops/action-gh-release@v1
