@@ -67,9 +67,12 @@ jobs:
     - name: create github release
       id: new_release
       uses: softprops/action-gh-release@v2.0.8
+      if: startsWith(github.ref, 'refs/tags/')
       with:
-        name: latest
-        make_latest: true
+    #    name: latest
+    #    make_latest: true
+        tag_name: ${{ github.ref }}
+        name: Release ${{ github.ref }}
         files: dist.tar.gz
       env:
         GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
