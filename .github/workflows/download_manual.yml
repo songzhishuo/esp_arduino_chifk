@@ -84,7 +84,7 @@ jobs:
         git config --global user.name "Active-Argon-Github"  # 设置用户名
 
     - name: Pull latest changes
-      run: git pull origin main  # 拉取最新的主分支变更
+      run: git pull  # 拉取最新的主分支变更
 
 
     - name: Commit and push artifacts
