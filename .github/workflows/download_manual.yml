@@ -83,8 +83,8 @@ jobs:
         git config --global user.email "815794369@qq.com"  # 设置邮箱
         git config --global user.name "Active-Argon-Github"  # 设置用户名
 
-    - name: Pull latest changes
-      run: git pull  # 拉取最新的主分支变更
+    # - name: Pull latest changes
+    #   run: git pull  # 拉取最新的主分支变更
 
 
     - name: Commit and push artifacts
