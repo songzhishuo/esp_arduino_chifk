@@ -76,3 +76,21 @@ jobs:
         files: dist.tar.gz
       env:
         GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+
+
+    - name: Configure Git
+      run: |
+        git config --global user.email "815794369@qq.com"  # 设置邮箱
+        git config --global user.name "Active-Argon-Github"  # 设置用户名
+
+    - name: Pull latest changes
+      run: git pull origin main  # 拉取最新的主分支变更
+
+
+    - name: Commit and push artifacts
+      run: |
+        git add dist.tar.gz  # 将dist目录中的产物添加到提交
+        git commit -m "Deploy artifacts" || echo "No changes to commit"
+        git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/songzhishuo/esp_push.git HEAD:main
+
+    # https://github.com/songzhishuo/esp_push.git
